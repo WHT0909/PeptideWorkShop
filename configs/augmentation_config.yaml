@@ -1,0 +1,6 @@
+gaussian_noise:
+  mean: 0.0
+  std: 0.01
+  n: 10
+  random_state: 42
+  out_path: './test/agn_data.csv'

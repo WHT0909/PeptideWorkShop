@@ -28,7 +28,7 @@ def load_data_from_csv(path, feature_out_path=None, label_out_path=None):
         raise ValueError("错误：请检查输入数据的列数")
     data_list = data.values
     labels = data_list[:, 2].astype(int).reshape((-1, 1))
-    features = data_list[:, 2:-1].astype(float)
+    features = data_list[:, 2:].astype(float)
     if feature_out_path is not None:
         feature_out_csv_data = np.hstack((data_list[:, 0].reshape((-1, 1)), features))
         check_path(feature_out_path)
@@ -95,12 +95,8 @@ def turn_fasta_to_csv(fasta_path, out_csv_path):
     print(f"处理完成, csv 文件已保存至{out_abs_path}")
 
 def main():
-    load_data_from_csv(path='../../examples/demo_data/feature_data/demo_csv.csv',
-                       label_out_path='./test/example_label_out_csv.csv',
-                       feature_out_path='./test/example_feature_out_csv.csv')
-
-    # turn_fasta_to_csv(fasta_path='../../examples/demo_data/fasta_data/demo_fasta.fasta',
-    #                   out_csv_path='./test/example_turn_fasta_to_csv.csv')
+    turn_fasta_to_csv(fasta_path='../../examples/demo_data/fasta_data/all_data.fasta',
+                      out_csv_path='./test/all_data.csv')
     return
 
 if __name__ == '__main__':
